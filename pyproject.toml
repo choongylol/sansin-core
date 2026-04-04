@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sansin-core"
+version = "0.1.0"
+description = "Local-first AI agent safety engine with Thompson Sampling. Score tool calls, learn from corrections, zero cloud dependency."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    {name = "Sansin", email = "hello@sansin.ai"},
+]
+keywords = ["ai", "agent", "safety", "guardrails", "thompson-sampling", "mcp", "ollama", "local"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://sansin.ai"
+Repository = "https://github.com/choongylol/sansin-core"
+Documentation = "https://docs.sansin.ai"
+
+[project.scripts]
+sansin-demo = "sansin_core.demo:main"
+sansin-mcp-proxy = "sansin_core.mcp.cli:main"
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2.0"]
+
+[tool.setuptools.packages.find]
+include = ["sansin_core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
